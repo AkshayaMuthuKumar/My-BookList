@@ -87,7 +87,7 @@ class Book {
       UI.addBookToList(book);
       // Add book to store
       Store.addBook(book);
-      UI.showAlert('Book Added',0'success');
+      UI.showAlert('Book Added','success');
       UI.clearFields();
     }
   });
