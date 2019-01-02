@@ -1,10 +1,10 @@
 class Book {
   constructor(title,author,isbn,stars,description) {
     this.title = title;
+    this.description = description;
     this.author = author;
     this.isbn = isbn;
     this.stars=stars;
-    this.description = description;
   }
 }
 
@@ -19,10 +19,10 @@ class Book {
     const row =document.createElement('tr');
     row.innerHTML = `
       <td>${book.title}</td>
+      <td>${book.description}</td>
       <td>${book.author}</td>
       <td>${book.isbn}</td>
       <td>${book.stars}</td>
-      <td>${book.description}</td>
       <td><a href="#" class="btn btn-danger btn-sm delete">X</a></td>
     `;
     list.appendChild(row);
@@ -44,10 +44,10 @@ class Book {
   }
   static clearFields() {
     document.querySelector('#title').value = '';
+    document.querySelector('#description').value = '';
     document.querySelector('#author').value = '';
     document.querySelector('#isbn').value = '';
     document.querySelector('.stars').value = '';
-    document.querySelector('#description').value = '';
   }
 }
   class Store {
@@ -115,10 +115,10 @@ function setRating(ev){
 document.querySelector('#book-form').addEventListener('submit', (e) => {
   e.preventDefault();
   const title = document.querySelector('#title').value;
+  const description = document.querySelector('#description').value;
   const author = document.querySelector('#author').value;
   const isbn = document.querySelector('#isbn').value;
   const stars= document.querySelector('.stars').getAttribute('data-rating');
-  const description = document.querySelector('#description').value;
 
   // Validate
   if(title ===''||author===''||isbn===''||stars===''||description==='') {
@@ -126,7 +126,7 @@ document.querySelector('#book-form').addEventListener('submit', (e) => {
   } 
   else {
     // Instatiate book
-    const book = new Book(title,author,isbn,stars,description);
+    const book = new Book(title,description,author,isbn,stars);
     // Add Book to UI
     UI.addBookToList(book);
     // Add book to store
