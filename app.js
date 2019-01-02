@@ -117,7 +117,7 @@ document.querySelector('#book-form').addEventListener('submit', (e) => {
   const title = document.querySelector('#title').value;
   const author = document.querySelector('#author').value;
   const isbn = document.querySelector('#isbn').value;
-  const stars=  document.querySelector('.stars').value;
+  const stars= document.querySelector('.stars').getAttribute('data-rating');
   const description = document.querySelector('#description').value;
 
   // Validate
