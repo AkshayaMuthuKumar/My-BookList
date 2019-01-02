@@ -7,6 +7,33 @@
   <link rel="stylesheet"href="https://bootswatch.com/4/yeti/bootstrap.min.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
   <title>MyBookList App</title>
+  <style>
+        .star{
+          color: goldenrod;
+          font-size: 2.0rem;
+          padding: 0 1rem; /* space out the stars */
+        }
+        .star::before{
+          content: '\2606';    /* star outline */
+          cursor: pointer;
+        }
+        .star.rated::before{
+          /* the style for a selected star */
+          content: '\2605';  /* filled star */
+        }
+        
+        .stars{
+            counter-reset: rateme 0;   
+            font-size: 2.0rem;
+            font-weight: 900;
+        }
+        .star.rated{
+            counter-increment: rateme 1;
+        }
+        .stars::after{
+            content: counter(rateme) '/5';
+        }
+    </style>
 </head>
  <body>
  <div class="container mt-4">
@@ -26,6 +53,22 @@
                 <label for="isbn">ISBN#</label>
             <input type="text" id="isbn" class="form-control">
         </div>
+        <div class="form-group">
+            <label for="stars">Rating</label><br>
+            <div class="stars" data-rating="1">
+                    <span class="star">&nbsp;</span>
+                    <span class="star">&nbsp;</span>
+                    <span class="star">&nbsp;</span>
+                    <span class="star">&nbsp;</span>
+                    <span class="star">&nbsp;</span>
+                </div>
+            </div>
+            <br>
+        <div class="form-group">
+            <label for="description">Description</label>
+            <textarea  style="margin-top:5px;" class="form-control" rows="3" id="description" placeholder="Enter your review"></textarea>
+
+        </div>
         <input type="submit" value="Add Book" class="btn btn-primary btn-block">
     </form>
     <table class="table table-striped mt-5">
@@ -34,13 +77,20 @@
                 <th>Title</th>
                 <th>Author</th>
                 <th>ISBN#</th>
-                <th></th>
+                <th>Rating</th>
+                <th>Description</th>
             </tr>
         </thead>
         <tbody id="book-list"></tbody>
     </table>
  </div>
- <script src="app.js"></script>
+ <script src="app.js"> </script>
+
+<script>
+
+
+</script>
+</script>
  </body>
  </html>
 
